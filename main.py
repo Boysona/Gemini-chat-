@@ -113,8 +113,7 @@ admin_state = {}
 
 def set_bot_info():
     commands = [
-        telebot.types.BotCommand("start", "👋Get a welcome message and
-info."),
+        telebot.types.BotCommand("start", "👋Get a welcome message and info"),
       telebot.types.BotCommand("status", "📊View Bot statistics"),
         telebot.types.BotCommand("help", "❓Get information on how to use the bot"),
         telebot.types.BotCommand("language", "🌐Change preferred language for translate/summarize"),
