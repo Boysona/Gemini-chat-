@@ -582,7 +582,7 @@ def select_media_language_command(message):
     markup = generate_language_keyboard("set_media_lang")
     bot.send_message(
         message.chat.id,
-        "Fadlan dooro luqadda feylasha maqalka ah ee aad u baahan tahay inaan u beddelo qoraal. Tani waxay caawinaysaa akhrinta saxda ah.",
+        "Please choose the language of the audio files that you need me to transcribe. This helps ensure accurate reading.",
         reply_markup=markup
     )
 
