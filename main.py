@@ -113,12 +113,13 @@ admin_state = {}
 
 def set_bot_info():
     commands = [
-        telebot.types.BotCommand("start", "Restart the bot )"),
-      telebot.types.BotCommand("status", "View Bot statistics"),
-        telebot.types.BotCommand("help", "View instructions"),
-        telebot.types.BotCommand("language", "Change preferred language for translate/summarize"),
-        telebot.types.BotCommand("media_language", "Set language for media transcription"),
-        telebot.types.BotCommand("privacy", "View privacy notice"),
+        telebot.types.BotCommand("start", "👋Get a welcome message and
+info."),
+      telebot.types.BotCommand("status", "📊View Bot statistics"),
+        telebot.types.BotCommand("help", "❓Get information on how to use the bot"),
+        telebot.types.BotCommand("language", "🌐Change preferred language for translate/summarize"),
+        telebot.types.BotCommand("media_language", "📝Set language for media transcription"),
+        telebot.types.BotCommand("privacy", "👮privacy"),
     ]
     bot.set_my_commands(commands)
 
@@ -349,10 +350,10 @@ def handle_file(message):
 
     if uid not in user_media_language_settings:
         bot.send_message(message.chat.id,
-                         "⚠️ Fadlan marka hore soo dooro luqadda feylka maqalka ah adoo isticmaalaya /media_language ka hor intaadan soo dirin feylka.")
+                         "⚠️ Please first select the language of the audio file using /media_language before sending the file.")
         return
 
-    try:
+try:
         if message.voice:
             bot.set_message_reaction(chat_id=message.chat.id, message_id=message.message_id, reaction=["👀"])
         elif message.audio:
@@ -386,7 +387,7 @@ def handle_file(message):
                 raise Exception("FFmpeg conversion failed or resulted in empty file.")
         except Exception as e:
             logging.error(f"FFmpeg conversion failed: {e}")
-            bot.send_message(message.chat.id, "⚠️ Fayoobkaaga lama beddeli karo qaabka saxda ah ee aqoonsiga codka.")
+            bot.send_message(message.chat.id, "⚠️ Your file cannot be converted to the correct voice recognition format..")
             if os.path.exists(local_path):
                 os.remove(local_path)
             return
@@ -596,7 +597,7 @@ def callback_set_media_language(call):
     bot.edit_message_text(
         chat_id=call.message.chat.id,
         message_id=call.message.message_id,
-        text=f"✅ Luqadda cod-qorista (transcription) ee warbaahintaada waxaa loo dejiyay: **{lang}**",
+        text=f"✅ The transcription language for your media is set to: **{lang}**",
         parse_mode="Markdown"
     )
     bot.answer_callback_query(call.id, text=f"Media language set to {lang}")
