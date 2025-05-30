@@ -8,7 +8,7 @@ from telebot import TeleBot, types
 from msspeech import MSSpeech, MSSpeechError
 
 # ====== CONFIG ======
-BOT_TOKEN  = "8114722716:AAHayxlSflH42TzI7ofnaWU99dMwc4NXt8Q"
+BOT_TOKEN  = "7236852370:AAF7I0G4t6iQWX5vmkh2b8EnTCVgxuQZzPo"
 BASE_URL   = "https://gemini-chat-0a7l.onrender.com/"
 AUDIO_DIR  = "audio_files"
 USERS_DB   = "users.json"
